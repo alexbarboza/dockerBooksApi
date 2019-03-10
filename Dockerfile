@@ -2,12 +2,12 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY BooksApi/*.csproj ./BooksApi/
+COPY BooksApi/*.csproj .
 RUN dotnet restore
 
 # copy everything else and build app
-COPY BooksApi/. ./BooksApi/
-WORKDIR /app/BooksApi
+COPY BooksApi/. .
+WORKDIR /app
 RUN dotnet publish -c Release -o out
 
 
